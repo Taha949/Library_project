@@ -1,0 +1,15 @@
+<div class="sidebar">
+  <button mat-raised-button
+          color="primary"
+          (click)="navigateToSearchBooks()"
+          [ngClass]="{'active': isBooksActive}">
+    Lister les livres
+  </button>
+
+  <button mat-raised-button
+          color="primary"
+          (click)="navigateToBorrows()"
+          [ngClass]="{'active': isBorrowsActive}">
+    Lister les emprunts
+  </button>
+</div>

@@ -1,0 +1,18 @@
+<div class="book-details">
+  <h1>Détails du Livre</h1>
+
+  <p><strong>Titre :</strong> {{ data.title }}</p>
+  <p><strong>Auteur :</strong> {{ data.author }}</p>
+  <p><strong>Nombre de pages :</strong> {{ data.pages }}</p>
+  <p><strong>Année de publication :</strong> {{ data.publicationYear }}</p>
+
+  <div class="button-group">
+    <button mat-raised-button color="primary"
+            [disabled]="isBorrowed"
+            (click)="onBorrow()">
+      {{ isBorrowed ? 'Indisponible' : 'Emprunter' }}
+    </button>
+
+    <button mat-raised-button color="primary" (click)="onClose()">Fermer</button>
+  </div>
+</div>

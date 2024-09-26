@@ -1,0 +1,79 @@
+/* Container principal pour la sidebar et le contenu */
+.container {
+  display: flex;
+  margin-left: 250px; /* Espace réservé pour la sidebar */
+  min-height: 100vh; /* Assurer que la page prend toujours toute la hauteur */
+  background-color: #f4f6f9; /* Optionnel: Ajouter une couleur de fond pour le contenu principal */
+}
+
+/* Style pour le contenu principal */
+.main-content {
+  padding: 20px;
+  width: calc(100% - 250px); /* S'assure que le contenu prend tout l'espace restant */
+  background-color: white; /* Couleur de fond pour le contenu */
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Légère ombre pour délimiter le contenu */
+  margin: 20px;
+  border-radius: 8px; /* Ajout de coins arrondis pour un look moderne */
+}
+
+button.mat-raised-button {
+  margin-right: 15px;
+  padding: 8px 16px;
+  background-color: #1e88e5;
+  color: white;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+button.mat-raised-button:hover {
+  background-color: #1565c0;
+}
+
+input {
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-left: 10px;
+  width: 250px;
+}
+
+table {
+  width: 100%;
+  margin-top: 20px;
+}
+
+th {
+  text-transform: capitalize;
+  text-align: left;
+  padding: 10px;
+  background-color: #f0f0f0;
+  font-weight: bold;
+  border-bottom: 1px solid #ddd;
+}
+
+td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.mat-elevation-z8 {
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1), 0px 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+button.mat-button {
+  font-weight: bold;
+  color: #1e88e5;
+}
+
+button.mat-button:hover {
+  background-color: rgba(30, 136, 229, 0.1);
+}
+
+button.mat-warn {
+  color: #f44336;
+}
+
+button.mat-warn:hover {
+  background-color: rgba(244, 67, 54, 0.1);
+}

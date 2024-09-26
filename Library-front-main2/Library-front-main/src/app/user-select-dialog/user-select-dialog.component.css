@@ -1,0 +1,27 @@
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+}
+
+button {
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+button.selected {
+  background-color: lightgreen;
+  font-weight: bold;
+}
+
+h2 {
+  margin-top: 20px;
+}
+
+p {
+  font-size: 16px;
+}

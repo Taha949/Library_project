@@ -1,0 +1,13 @@
+<h1 mat-dialog-title>Sélectionner un utilisateur</h1>
+<div mat-dialog-content>
+  <mat-form-field>
+    <mat-label>Utilisateur</mat-label>
+    <mat-select [(value)]="selectedUser">
+      <mat-option *ngFor="let user of users" [value]="user">{{ user.email }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onCancel()">Annuler</button>
+  <button mat-raised-button color="primary" (click)="onConfirm()" [disabled]="!selectedUser">Confirmer</button>
+</div>

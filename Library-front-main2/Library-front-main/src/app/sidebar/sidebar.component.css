@@ -1,0 +1,51 @@
+.sidebar {
+    width: 250px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: linear-gradient(135deg, #3f51b5, #1a237e);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+  }
+
+  .sidebar button {
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background-color: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 5px;
+    transition: all 0.3s ease;
+  }
+
+  .sidebar button:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* Effet de survol */
+    border-color: white; /* Couleur de la bordure lors du survol */
+  }
+
+  .sidebar button:focus {
+    outline: none;
+  }
+
+  .sidebar button:active {
+    background-color: rgba(255, 255, 255, 0.4);
+  }
+
+  .sidebar h2 {
+    color: white;
+    margin-bottom: 30px;
+    font-size: 22px;
+    text-align: center;
+  }
+button.active {
+  background-color: #3f51b5;
+  color: white;
+}
