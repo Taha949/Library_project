@@ -45,6 +45,7 @@ export class UserDialogComponent implements OnInit {
         next: (response) => {
           console.log('Utilisateur ajouté avec succès', response);
           this.dialogRef.close(true);
+          alert('L\'utilisateur a été ajouté avec succès.');
         },
         error: (error) => {
           console.error('Erreur lors de l\'ajout de l\'utilisateur', error);

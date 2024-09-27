@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatTableModule } from '@angular/material/table';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
-import { ApiService } from "../api.service";
+import {ApiService, Book} from "../api.service";
 import { BookDetailsComponent } from "../book-details/book-details.component";
 import { BookDialogComponent } from "../book-dialog/book-dialog.component";
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
+import {BookEditDialogComponent} from "../book-edit-dialog/book-edit-dialog.component";
 
 @Component({
   selector: 'app-books-list',
@@ -31,10 +32,47 @@ export class BooksListComponent implements OnInit {
         this.filteredBooks = data;
       },
       error: (error) => {
+        console.error('Erreur lors de la recupertion des livres', error);
+      }
+    });
+  }
+
+  loadBooks(): void {
+    this.apiService.getBooks().subscribe({
+      next: (data) => {
+        this.books = data;
+      },
+      error: (error) => {
         console.error('Erreur lors de la récupération des livres', error);
       }
     });
   }
+
+  openEditBookDialog(book: Book): void {
+    const dialogRef = this.dialog.open(BookEditDialogComponent, {
+      width: '400px',
+      data: book
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        const updatedBook = { ...book, ...result };
+        this.apiService.editBook(updatedBook).subscribe({
+          next: (updatedBook) => {
+            console.log('Livre mis à jour avec succès:', updatedBook);
+            const index = this.books.findIndex(b => b.id === updatedBook.id);
+            if (index !== -1) {
+              this.books[index] = updatedBook;
+            }
+          },
+          error: (error) => {
+            console.error('Erreur lors de la mise à jour du livre', error);
+          }
+        });
+      }
+    });
+  }
+
 
   filterBooks(): void {
     const query = this.searchQuery.toLowerCase();
@@ -54,13 +92,14 @@ export class BooksListComponent implements OnInit {
           title: result.title,
           author: result.author,
           pages: result.pages,
-          publicationYear: result.publication_year
+          publication_year: result.publication_year
         };
 
         this.apiService.addBook(newBook).subscribe({
           next: (response) => {
             this.books.push(response);
             this.filterBooks();
+            alert('Le livre a été ajouté avec succès.');
           },
           error: (error) => {
             console.error('Erreur lors de l\'ajout du livre', error);
@@ -82,8 +121,10 @@ export class BooksListComponent implements OnInit {
       next: () => {
         this.books = this.books.filter(book => book.id !== id);
         this.filterBooks();
+        alert('Le livre a été supprimé avec succès.');
       },
       error: (error) => {
+        alert('Ce livre est actuellement emprunté et ne peut pas être supprimé.');
         console.error('Erreur lors de la suppression du livre', error);
       }
     });

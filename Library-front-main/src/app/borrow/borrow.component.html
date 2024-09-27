@@ -1,7 +1,14 @@
 <div class="main-content">
   <h2>Liste des emprunts</h2>
+
+  <mat-form-field appearance="fill" style="width: 100%; max-width: 600px; padding-left: 20px">
+    <mat-label>Rechercher par Titre ou Utilisateur</mat-label>
+    <input matInput [(ngModel)]="searchQuery" (input)="filterBorrows()" placeholder="Rechercher par Titre ou Utilisateur">
+  </mat-form-field>
+
   <button mat-raised-button color="primary" (click)="addUser()">Ajouter un nouvel utilisateur</button>
-  <table mat-table [dataSource]="borrows" class="mat-elevation-z8">
+
+  <table mat-table [dataSource]="filteredBorrows" class="mat-elevation-z8">
     <ng-container matColumnDef="id">
       <th mat-header-cell *matHeaderCellDef> ID </th>
       <td mat-cell *matCellDef="let borrow"> {{ borrow.id }} </td>

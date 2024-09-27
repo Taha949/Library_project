@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import {MatSnackBarModule} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-root',
@@ -13,7 +14,8 @@ import { FormsModule } from '@angular/forms';
     CommonModule,
     SidebarComponent,
     RouterModule,
-    FormsModule
+    FormsModule,
+    MatSnackBarModule
   ]
 })
 export class AppComponent {

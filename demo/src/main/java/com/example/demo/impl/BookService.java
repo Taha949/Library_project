@@ -29,4 +29,14 @@ public class BookService {
     public void deleteBook(Long id) {
         bookRepository.deleteById(id);
     }
+
+    public Optional<Book> updateBook(Long id, Book updatedBook) {
+        return bookRepository.findById(id).map(existingBook -> {
+            existingBook.setTitle(updatedBook.getTitle());
+            existingBook.setAuthor(updatedBook.getAuthor());
+            existingBook.setPages(updatedBook.getPages());
+            existingBook.setPublicationYear(updatedBook.getPublicationYear());
+            return bookRepository.save(existingBook);
+        });
+    }
 }

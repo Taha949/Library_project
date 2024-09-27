@@ -66,6 +66,9 @@ export class ApiService {
   addUser(user: any): Observable<any> {
     return this.http.post<any>(`${this.baseUrl}/users`, user);
   }
+  getBookBorrowStatus(bookId: number): Observable<Borrow | null> {
+    return this.http.get<Borrow | null>(`${this.baseUrl}/borrows/book/${bookId}`);
+  }
 
 
 

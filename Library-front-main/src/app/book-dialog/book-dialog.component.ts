@@ -35,7 +35,7 @@ import { MatButtonModule } from '@angular/material/button';
 
       <mat-form-field>
         <mat-label>Année de publication</mat-label>
-        <input matInput type="number" formControlName="publicationYear">
+        <input matInput type="number" formControlName="publicationYear"> <!-- Harmonisé ici -->
       </mat-form-field>
 
       <button mat-raised-button color="primary" type="submit">Ajouter</button>
@@ -53,7 +53,7 @@ export class BookDialogComponent {
       title: ['', Validators.required],
       author: ['', Validators.required],
       pages: [0, [Validators.required, Validators.min(1)]],
-      publication_year: [new Date().getFullYear(), [Validators.required, Validators.min(0)]]
+      publicationYear: [new Date().getFullYear(), [Validators.required, Validators.min(0)]]  // Harmonisé ici
     });
   }
 

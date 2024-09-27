@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-
 import java.util.List;
 import java.util.Optional;
 
@@ -39,5 +38,21 @@ public class BookController {
     public ResponseEntity<Void> deleteBook(@PathVariable Long id) {
         bookService.deleteBook(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Book> updateBook(@PathVariable Long id, @RequestBody Book updatedBook) {
+        Optional<Book> existingBook = bookService.findBookById(id);
+        if (existingBook.isPresent()) {
+            Book book = existingBook.get();
+            book.setTitle(updatedBook.getTitle());
+            book.setAuthor(updatedBook.getAuthor());
+            book.setPages(updatedBook.getPages());
+            book.setPublicationYear(updatedBook.getPublicationYear());
+            Book savedBook = bookService.saveBook(book);
+            return ResponseEntity.ok(savedBook);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 }
